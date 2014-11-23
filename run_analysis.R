@@ -11,8 +11,7 @@ run_analysis <- function() {
     features <- read.table("UCI HAR Dataset/features.txt", stringsAsFactors = FALSE)$V2
     mean.and.std = grep("(mean|std)\\(", features)
     total.x <- total.x[, mean.and.std]
-    features <- features[mean.and.std]
-    names(total.x) <- features
+    names(total.x) <- make.names(features[mean.and.std])
     
     # get subject info
     train.subjects <- read.table("UCI HAR Dataset/train/subject_train.txt")
